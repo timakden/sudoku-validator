@@ -13,17 +13,30 @@ repositories {
     mavenCentral()
 }
 
+val kotestVersion = "4.1.3"
+val tinylogVersion = "2.1.2"
+
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.tinylog:tinylog-api-kotlin:$tinylogVersion")
+    implementation("org.tinylog:tinylog-impl:$tinylogVersion")
 
     // kotest
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.1.3") // for kotest framework
-    testImplementation("io.kotest:kotest-assertions-core-jvm:4.1.3") // for kotest core jvm assertions
-    testImplementation("io.kotest:kotest-property-jvm:4.1.3") // for kotest property test
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-property-jvm:$kotestVersion")
 }
 
 tasks {
+    jar {
+        manifest {
+            attributes("Main-Class" to "ru.timakden.sudoku.MainKt")
+        }
+
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
     }
