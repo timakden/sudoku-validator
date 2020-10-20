@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "4.2.5"
+val kotestVersion = "4.3.0"
 val tinylogVersion = "2.1.2"
 
 dependencies {
