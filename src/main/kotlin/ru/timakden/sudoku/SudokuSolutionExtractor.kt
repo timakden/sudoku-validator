@@ -20,7 +20,7 @@ object SudokuSolutionExtractor {
         val solution = file.useLines { lines ->
             lines.mapIndexed { i, line ->
                 if (!line.matches(ROW_REGEX))
-                    throw SudokuException("Line ${i + 1} should match the regex \"$ROW_REGEX\", but it wasn't: $line")
+                    throw SudokuException("Line ${i + 1} should match the regex \"$ROW_REGEX\", but it didn't: $line")
                 line.split(',').map { it.toInt() }
             }.toList()
         }

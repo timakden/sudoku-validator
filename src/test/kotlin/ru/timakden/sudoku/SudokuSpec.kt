@@ -43,7 +43,7 @@ class SudokuSpec : StringSpec({
         val filepath = this::class.java.classLoader.getResource("contains_letter.txt")?.path ?: ""
         shouldThrow<SudokuException> {
             SudokuSolutionExtractor.getSolutionFromFile(filepath)
-        } shouldHaveMessage "Line 6 should match the regex \"([1-9],){8}[1-9]\", but it wasn't: 9,5,1,7,X,3,6,2,8"
+        } shouldHaveMessage "Line 6 should match the regex \"([1-9],){8}[1-9]\", but it didn't: 9,5,1,7,X,3,6,2,8"
     }
 
     "SudokuValidator should validate solution" {
