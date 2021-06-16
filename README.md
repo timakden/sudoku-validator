@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/timakden/sudoku-validator/actions/workflows/gradle.yml/badge.svg)](https://github.com/timakden/sudoku-validator/actions/workflows/gradle.yml)
+
 # Sudoku validator
 
 Create a command line tool (running on jvm) for validating a standard 9x9 Sudoku puzzle.
