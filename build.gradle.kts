@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     idea
-    id("com.github.ben-manes.versions") version "0.46.0"
-    kotlin("jvm") version "1.8.21"
+    id("com.github.ben-manes.versions") version "0.47.0"
+    kotlin("jvm") version "1.8.22"
 }
 
 group = "ru.timakden"
@@ -13,8 +13,8 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "5.6.1"
-val tinylogVersion = "2.6.1"
+val kotestVersion = "5.6.2"
+val tinylogVersion = "2.6.2"
 
 dependencies {
     implementation(kotlin("reflect"))
@@ -29,14 +29,14 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(19)
+    jvmToolchain(17)
 }
 
 tasks {
     compileKotlin {
         compilerOptions {
             freeCompilerArgs.add("-Xjsr305=strict")
-            jvmTarget.set(JvmTarget.JVM_19)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     test {
