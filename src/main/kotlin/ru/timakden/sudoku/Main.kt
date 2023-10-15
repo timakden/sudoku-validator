@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
         val solution = SudokuSolutionExtractor.getSolutionFromFile(args.first())
         SudokuValidator.validate(solution)
     } catch (e: Exception) {
-        Logger.error(e.message)
+        Logger.error(e)
         exitProcess(1)
     }
 }
