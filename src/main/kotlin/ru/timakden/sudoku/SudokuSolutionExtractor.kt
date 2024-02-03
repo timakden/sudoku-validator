@@ -1,6 +1,6 @@
 package ru.timakden.sudoku
 
-import java.io.File
+import kotlin.io.path.*
 
 object SudokuSolutionExtractor {
     private val ROW_REGEX = "([1-9],){8}[1-9]".toRegex()
@@ -13,11 +13,11 @@ object SudokuSolutionExtractor {
      * @exception SudokuException when failed to extract the solution or provided data is invalid
      */
     fun getSolutionFromFile(filepath: String): List<List<Int>> {
-        val file = File(filepath)
-        if (!file.exists() || file.isDirectory)
-            throw SudokuException("File ${file.name} doesn't exist or it's a directory")
+        val path = Path(filepath)
+        if (path.notExists() || path.isDirectory())
+            throw SudokuException("File ${path.name} doesn't exist or it's a directory")
 
-        val solution = file.useLines { lines ->
+        val solution = path.useLines { lines ->
             lines.mapIndexed { i, line ->
                 if (!line.matches(ROW_REGEX))
                     throw SudokuException("Line ${i + 1} should match the regex \"$ROW_REGEX\", but it didn't: $line")

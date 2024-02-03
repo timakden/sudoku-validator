@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
     try {
         require(args.size == 1) { "This program should be executed with 1 argument – file name" }
 
-        val solution = SudokuSolutionExtractor.getSolutionFromFile(args.first())
+        val solution = SudokuSolutionExtractor.getSolutionFromFile(args.single())
         SudokuValidator.validate(solution)
     } catch (e: Exception) {
         Logger.error(e)
