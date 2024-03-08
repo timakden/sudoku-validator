@@ -1,9 +1,13 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+
+val kotestVersion: String by project
+val kotlinVersion: String by project
+val tinylogVersion: String by project
 
 plugins {
     idea
     id("com.github.ben-manes.versions") version "0.51.0"
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "1.9.23"
 }
 
 group = "ru.timakden"
@@ -12,9 +16,6 @@ version = "1.0"
 repositories {
     mavenCentral()
 }
-
-val kotestVersion = "5.8.0"
-val tinylogVersion = "2.7.0"
 
 dependencies {
     implementation(kotlin("reflect"))
@@ -36,11 +37,14 @@ tasks {
     compileKotlin {
         compilerOptions {
             freeCompilerArgs.add("-Xjsr305=strict")
-            jvmTarget.set(JvmTarget.JVM_21)
+            jvmTarget.set(JVM_21)
         }
     }
     test {
         useJUnitPlatform()
+    }
+    wrapper {
+        gradleVersion = "8.6"
     }
 }
 
